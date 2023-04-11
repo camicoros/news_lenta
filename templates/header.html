@@ -1,0 +1,11 @@
+<header class="header">
+    <nav class="menu">
+    {% block login %}
+        {% if request.resolver_match.url_name != 'post-list' %}
+            <a class="menu__item" href="{% url 'news:post-list' %}">News</a>
+        {% else %}
+            <p class="menu__item menu__item_active">News</p>
+        {% endif %}
+    {% endblock login %}
+    </nav>
+</header>

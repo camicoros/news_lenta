@@ -1,0 +1,5 @@
+<div class="post">
+    <h2 class="post__name"><a class="post__link" href="{{ post.get_absolute_url }}">{{ post.name }}</a></h2>
+    <p class="post__pub-date">{{ post.pub_date|date:"d M Y" }}</p>
+    <p class="post__description">{{ post.description }}</p>
+</div>

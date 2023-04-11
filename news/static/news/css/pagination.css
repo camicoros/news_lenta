@@ -1,0 +1,10 @@
+.pagination__link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in;
+}
+
+.pagination__link:hover {
+    opacity: 0.4;
+}

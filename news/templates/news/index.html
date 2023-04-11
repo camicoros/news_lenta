@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static_files %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'news/css/posts.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'news/css/post.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'news/css/pagination.css' %}" type="text/css">
+{% endblock static_files %}
+
+{% block title %}
+    {{ header }}
+{% endblock title %}
+
+{% block page %}
+    <h1 class="title">{{ header }}</h1>
+    {% if page_obj %}
+    <ul class="posts">
+        {% for post in page_obj %}
+            <li class="posts__item">
+                {% include 'news/post_short_info.html' %}
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class="pagination__link" href="?page=1">&laquo; first</a>
+                <a class="pagination__link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a class="pagination__link" href="?page={{ page_obj.next_page_number }}">next</a>
+                <a class="pagination__link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% else %}
+        <h2>Новостных постов нет</h2>
+    {% endif %}
+
+{% endblock page %}

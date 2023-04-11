@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static_files %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'news/css/post.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'news/css/post__solo.css' %}" type="text/css">
+{% endblock static_files %}
+
+{% block title %}
+    {{ header }}
+{% endblock title %}
+
+{% block page %}
+    <h1 class="title">{{ header }}</h1>
+    <div class="post post_solo">
+        <p class="post__pub-date">{{ post.pub_date|date:"d M Y" }}</p>
+        <p class="post__text">{{ post.text }}</p>
+    </div>
+
+{% endblock page %}
